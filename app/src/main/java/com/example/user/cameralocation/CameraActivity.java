@@ -103,7 +103,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
     private void permissionCheckCamera() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                && checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                && checkSelfPermission(Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(
                     new String[]{Manifest.permission.CAMERA},
                     1100);
@@ -129,8 +130,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void openCameraIntent() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(takePictureIntent, 666);
     }
@@ -142,11 +143,11 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         switch (requestCode) {
             case 1100:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    permissionCheckStorage();
+                    permissionCheckCamera();
                 break;
             case 1300:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    openCameraIntent();
+                    permissionCheckStorage();
                 break;
 
         }
