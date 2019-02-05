@@ -40,7 +40,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener {
-
     ImageButton btnCamera, btnLocation;
     ImageView ivCamera;
     private String image_url = "";
@@ -51,7 +50,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_main);
         btnCamera = findViewById(R.id.btn_camera);
         ivCamera = findViewById(R.id.iv_camera);
-        btnLocation = findViewById(R.id.btn_location);
         if (btnCamera != null) {
             this.btnCamera.setOnClickListener(this);
         }
